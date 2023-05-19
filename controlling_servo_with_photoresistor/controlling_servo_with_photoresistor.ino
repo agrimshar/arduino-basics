@@ -14,10 +14,12 @@ Servo myServo;
 void setup(){
   myServo.attach(servoPin);
   pinMode(photoresistor, INPUT);
+  Serial.begin(9600);
 }
 
 void loop(){
   brightness = analogRead(photoresistor);
+  Serial.println(brightness);
   position = ANALOG_TO_DEGREES * brightness;
   myServo.write(position);
   delay(delayTime);
